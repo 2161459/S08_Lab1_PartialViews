@@ -22,10 +22,18 @@ namespace ZombieParty.Models
         [Display(Name = "Zombie Type")]
         [ForeignKey("ZombieType")]
         public int ZombieTypeId { get; set; }
-        [ValidateNever] 
-        public ZombieType? ZombieType { get; set; }
+        //[ValidateNever]
+        //public ZombieType? ZombieType { get; set; }
 
-        [ValidateNever] 
-        public List<HuntingLog> HuntingLogs { get; set; }
+        //[ValidateNever] 
+        //public List<HuntingLog> HuntingLogs { get; set; }
+
+        [ValidateNever]
+        public virtual ZombieType? ZombieType { get; set; } //J'ai ajouter Virtual virtual permet à Entity Framework Core d'utiliser le Lazy Loading avec les proxies.
+
+        [ValidateNever]
+        public virtual List<HuntingLog> HuntingLogs { get; set; } //J'ai ajouter Virtual virtual permet à Entity Framework Core d'utiliser le Lazy Loading avec les proxies.
+
+
     }
 }

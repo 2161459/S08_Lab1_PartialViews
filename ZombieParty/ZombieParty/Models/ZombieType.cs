@@ -6,6 +6,8 @@ namespace ZombieParty.Models
 {
     public class ZombieType
     {
+
+
         [Key]
         public int Id { get; set; }
         [DisplayName("Type Name")]
@@ -16,6 +18,8 @@ namespace ZombieParty.Models
         [Range(2, 5, ErrorMessage = "{0} requires a value between {1} and {2}.")]
         public int Point { get; set; }
         [ValidateNever]
-        public List<Zombie>? Zombies { get; set; }
+        public virtual List<Zombie>? Zombies { get; set; } //J'ai ajouter Virtual
+
+
     }
 }
