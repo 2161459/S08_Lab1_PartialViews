@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ZombieParty.Models.HuntingLog>
+
+@{
+    ViewData["Title"] = "Hunting Logs";
+}
+
+<h1>Hunting Logs</h1>
+
+<p>
+    <a asp-action="Upsert" class="btn btn-success">
+        Create New
+    </a>
+</p>
+
+<table class="table bg-white shadow">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+
+                <td>
+                    <a asp-action="Upsert"
+                       asp-route-id="@item.Id"
+                       class="btn btn-info">
+                        Edit
+                    </a>
+
+                    <a asp-action="Details"
+                       asp-route-id="@item.Id"
+                       class="btn btn-primary">
+                        Details
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@item.Id"
+                       class="btn btn-danger">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

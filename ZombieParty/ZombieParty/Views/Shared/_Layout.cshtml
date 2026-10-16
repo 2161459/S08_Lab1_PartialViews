@@ -44,6 +44,29 @@
                                 <li><a class="dropdown-item" asp-controller="Weapon" asp-action="Index">Manage weapons</a></li>
                             </ul>
                         </li>
+
+                        @* Pour Hunter dans le navbar *@
+                        
+                       @*  Crée un élément de menu déroulant. *@
+                        <li class="nav-item dropdown">
+                            @* Affiche le texte Hunters dans la barre de navigation. *@
+                            <a class="nav-link text-dark dropdown-toggle"
+                               href="#"
+                               id="huntersDropdown"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                Hunters
+                            </a>
+                           @*  La navigation du hunting log *@
+                            <ul class="dropdown-menu" aria-labelledby="huntersDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="/HuntingLog/Index">
+                                        Manage Hunting Log
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
