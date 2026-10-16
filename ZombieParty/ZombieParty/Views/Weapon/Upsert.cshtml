@@ -1,17 +1,41 @@
-﻿@model ZombieParty.Models.Weapon
+﻿@* Pourquoi Upsert ?
+- Create = Créer une nouvelle arme.
+- Update = Modifier une arme existante.
+- Upsert = Utiliser le même formulaire pour créer OU modifier une arme. *@
 
-@{
-    ViewData["Title"] = "Create";
+@* Modifiez la section du titre afin qu’elle affiche Create ou Edit selon le cas *@
+@model ZombieParty.Models.Weapon
+
+@if (Model.WeaponId != 0)
+{
+    ViewData["Title"] = "Edit";
+}
+else
+{
+   ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+
+<h1> @ViewData["Title"] </h1>
 
 <h4>Weapon</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4 bg-white shadow ">
-        <form asp-action="Create">
+
+
+@*         <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+       
+            @* <form asp-action="Create"> *@
+            <form asp-action="Upsert">
+            <input asp-for="WeaponId" class="form-control" hidden />
+       @*  Il permet d'envoyer l'identifiant de l'arme au contrôleur sans l'afficher à l'utilisateur. *@
+
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -52,15 +76,15 @@
                 <input asp-for="QtyBought" class="form-control" />
                 <span asp-validation-for="QtyBought" class="text-danger"></span>
             </div>
-            <div class="form-group mt-2 mb-2">
+            @* <div class="form-group mt-2 mb-2">
                 <input type="submit" value="Create" class="btn btn-primary" />
+            </div> *@
+            <div class="row form-group">
+                <partial name="_UpsertButtons" model="Model.WeaponId" />
             </div>
+
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
