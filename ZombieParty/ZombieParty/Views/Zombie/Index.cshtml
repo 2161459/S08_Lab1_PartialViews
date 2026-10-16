@@ -13,7 +13,7 @@
     </div>
 
     <div class="row">
-        @foreach (var item in Model)
+@*         @foreach (var item in Model)
         {
             <div href="#" class="card  border m-3 text-center bg-warning" style="width: 20rem; background-image: url('/images/imagesLayout/Fond.png'); ">
                 <div class="card-body  text-warning">
@@ -28,6 +28,14 @@
                     </a>
                 </div>
             </div>
+        } *@
+
+      @*Avant, tu écrivais tout le HTML de chaque carte directement dans Index.cshtml. comme ca on a juste a modifier la vue
+        Maintenant, tu utilises : *@
+        @foreach (var item in Model)
+        {
+            // Ajoutez la vue partielle
+            <partial name="_ZombieCard" model="item" />
         }
     </div>
 </div>

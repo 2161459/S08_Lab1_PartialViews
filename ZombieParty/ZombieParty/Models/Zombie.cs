@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations.Schema;
+using ZombieParty.ViewModels;
 
 namespace ZombieParty.Models
 {
@@ -30,6 +31,8 @@ namespace ZombieParty.Models
 
         [ValidateNever]
         public virtual ZombieType? ZombieType { get; set; } //J'ai ajouter Virtual virtual permet à Entity Framework Core d'utiliser le Lazy Loading avec les proxies.
+
+        //Tu ajoutes virtual uniquement devant les propriétés de navigation, pas devant les propriétés normales comme Id, Name, Point ou ZombieTypeId.
 
         [ValidateNever]
         public virtual List<HuntingLog> HuntingLogs { get; set; } //J'ai ajouter Virtual virtual permet à Entity Framework Core d'utiliser le Lazy Loading avec les proxies.
